@@ -5,6 +5,7 @@ import com.github.pojo.AppInfo;
 import com.github.pojo.DataDictionary;
 import com.github.pojo.QueryAppInfoVO;
 import com.github.util.PageBean;
+import com.sun.xml.internal.bind.v2.schemagen.xmlschema.Appinfo;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -33,5 +34,27 @@ public class AppinfoServiceImpl implements AppinfoService {
     @Override
     public List<DataDictionary> findDictionaryList(String param) {
         return appInfoMapper.findDictionaryList(param);
+    }
+
+    @Override
+    public boolean apkNameExist(String apkName) {
+        AppInfo appInfo = appInfoMapper.apkNameExist(apkName);
+        if (appInfo != null){
+            return true;
+        }
+        return false;
+    }
+
+    @Override
+    public boolean appInfoAdd(AppInfo appInfo) {
+        if (appInfoMapper.appInfoAdd(appInfo) > 0){
+            return true;
+        }
+        return false;
+    }
+
+    @Override
+    public AppInfo findAppInfoById(Integer id) {
+        return appInfoMapper.findAppInfoById(id);
     }
 }

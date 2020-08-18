@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.github.dao.AppVersionMapper">
+    <!--List<AppVersion> appversionadd(Integer id);-->
+    <select id="appversionadd" parameterType="_int" resultType="appVersion">
+        SELECT
+	      *,i.softwareName appName,d.valueName publishStatusName
+            FROM app_version v,app_info i,data_dictionary d
+                WHERE appId = #{id}
+                    and v.appId=i.id
+                    and d.valueId = v.publishStatus
+                    and d.typeCode = "PUBLISH_STATUS"
+    </select>
+    <!--AppVersion findAppVersionById(Integer vid);-->
+    <select id="findAppVersionById" parameterType="_int" resultType="appVersion">
+        select  * from  app_version where  id = #{vid}
+    </select>
+</mapper>
