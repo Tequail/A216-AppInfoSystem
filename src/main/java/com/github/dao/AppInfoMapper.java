@@ -20,4 +20,6 @@ public interface AppInfoMapper {
     int appInfoAdd(AppInfo appInfo);
 
     AppInfo findAppInfoById(Integer id);
+
+    int checkSave(@Param("status") Integer status,@Param("id") Integer id);
 }

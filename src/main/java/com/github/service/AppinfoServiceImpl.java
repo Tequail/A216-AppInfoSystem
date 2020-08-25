@@ -5,7 +5,6 @@ import com.github.pojo.AppInfo;
 import com.github.pojo.DataDictionary;
 import com.github.pojo.QueryAppInfoVO;
 import com.github.util.PageBean;
-import com.sun.xml.internal.bind.v2.schemagen.xmlschema.Appinfo;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -56,5 +55,13 @@ public class AppinfoServiceImpl implements AppinfoService {
     @Override
     public AppInfo findAppInfoById(Integer id) {
         return appInfoMapper.findAppInfoById(id);
+    }
+
+    @Override
+    public boolean checkSave(Integer status, Integer id) {
+        if (appInfoMapper.checkSave(status,id) > 0){
+            return true;
+        }
+        return false;
     }
 }

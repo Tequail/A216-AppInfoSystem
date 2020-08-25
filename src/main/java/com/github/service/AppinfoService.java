@@ -4,7 +4,6 @@ import com.github.pojo.AppInfo;
 import com.github.pojo.DataDictionary;
 import com.github.pojo.QueryAppInfoVO;
 import com.github.util.PageBean;
-import com.sun.xml.internal.bind.v2.schemagen.xmlschema.Appinfo;
 
 import java.util.List;
 
@@ -19,4 +18,5 @@ public interface AppinfoService {
 
     AppInfo findAppInfoById(Integer id);
 
+    boolean checkSave(Integer status, Integer id);
 }

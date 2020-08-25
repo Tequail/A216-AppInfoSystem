@@ -25,6 +25,7 @@
               <if test="queryCategoryLevel3 != null">
                   and categoryLevel3 = #{queryCategoryLevel3}
               </if>
+
           </where>
     </select>
     <!--List<AppInfo> findAppInfo(@Param("startIndex")int startIndex,@Param("pageSize") int pageSize);-->
@@ -95,4 +96,10 @@
             from `app_info` i
               where id = #{id}
     </select>
+
+    <!--int checkSave(@Param("status") Integer status,@Param("id") Integer id);-->
+    <update id="checkSave" >
+        UPDATE app_info SET `status` = #{status} WHERE  id = #{id}
+    </update>
+
 </mapper>
